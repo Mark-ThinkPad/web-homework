@@ -16,3 +16,4 @@
 - 数据库：`SQLite3`, 采用`ORM`方式操作, 使用到的库为`flask-sqlalchemy`
 
 (生成`requirements.txt`)
+(截图)
