@@ -5,6 +5,7 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" href="/static/images/favicon.ico">
   <link rel="stylesheet" href="/static/css/bulma.min.css">
   <link rel="stylesheet" href="/static/css/base.css">
   <title>Python Web 全栈作品</title>
@@ -30,25 +31,25 @@
           <div class="navbar-start">
             <a class="navbar-item" href="/notes">
               <span class="icon has-text-link">
-                <ion-icon name="receipt-outline"></ion-icon>
+                <i class="far fa-sticky-note"></i>
               </span>
               <span>云笔记</span>
             </a>
             <a class="navbar-item">
               <span class="icon has-text-danger">
-                <ion-icon name="list-outline"></ion-icon>
+                <i class="far fa-list-alt"></i>
               </span>
               <span>待办列表</span>
             </a>
             <a class="navbar-item">
               <span class="icon has-text-primary">
-                <ion-icon name="images-outline"></ion-icon>
+                <i class="far fa-images"></i>
               </span>
               <span>在线图床</span>
             </a>
             <a class="navbar-item">
               <span class="icon has-text-success">
-                <ion-icon name="mail-outline"></ion-icon>
+                <i class="far fa-comment"></i>
               </span>
               <span>留言板</span>
             </a>
@@ -74,12 +75,72 @@
   <footer class="footer">
     <div class="container">
       <div class="content">
-
+        <div class="columns">
+          <div class="column is-9">
+            <h1 class="title is-4">专选课《Web开发技术》大作业</h1>
+            <p>用户登录系统配合session实现</p>
+            <p>基于用户系统设计了四个功能板块：云笔记、待办列表、在线图床、留言板</p>
+            <p>后端采用Python Flask方案，数据库使用SQLite3</p>
+            <p>数据库的建立和操作均使用ORM方式，由Flask-SQLAlchemy提供</p>
+            <p>前端UI使用纯CSS框架Bluma和图标库Font Awesome构建</p>
+          </div>
+          <div class="column is-3">
+            <h4 class="title">相关链接</h4>
+            <p>
+              <a class="has-text-grey-dark" href="https://github.com/Mark-ThinkPad/web-homework"
+                 target="_blank" rel="noopener norefferrer">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>GitHub</span>
+              </a>
+            </p>
+            <p>
+              <a class="has-text-grey-dark" href="https://gitee.com/Mark-ThinkPad/web-homework"
+                 target="_blank" rel="noopener norefferrer">
+                <span class="icon">
+                  <img src="/static/images/gitee-logo.ico" alt="gitee-logo" width="16" height="16">
+                </span>
+                <span>Gitee</span>
+              </a>
+            </p>
+            <p>
+              <a class="has-text-grey-dark" href="https://flask.palletsprojects.com/en/1.1.x/"
+                 target="_blank" rel="noopener norefferrer">
+                <span class="icon">
+                  <img src="/static/images/flask-icon.png" alt="flask-icon" width="16" height="16">
+                </span>
+                <span>Flask</span>
+              </a>
+            </p>
+            <p>
+              <a class="has-text-grey-dark" href="https://bulma.io/"
+                 target="_blank" rel="noopener norefferrer">
+                <span class="icon">
+                  <img src="/static/images/bulma-logo.png" alt="bulma-logo" >
+                </span>
+                <span>Bulma</span>
+              </a>
+            </p>
+            <p>
+              <a class="has-text-grey-dark" href="https://fontawesome.com/"
+                 target="_blank" rel="noopener norefferrer">
+                <span class="icon has-text-info">
+                  <i class="fab fa-font-awesome"></i>
+                </span>
+                <span>Font Awesome</span>
+              </a>
+            </p>
+          </div>
+        </div>
+        <div>
+          <span>&copy;2020 计科11704 周淦清 201703407</span>
+        </div>
       </div>
     </div>
   </footer>
 
-  <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <script src="/static/js/base.js"></script>
   {% block js %}
   {% endblock %}
