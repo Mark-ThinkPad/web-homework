@@ -1,79 +1,87 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/static/css/bulma.min.css">
-    <link rel="stylesheet" href="/static/css/base.css">
-    <title>Python Web 全栈作品</title>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/static/css/bulma.min.css">
+  <link rel="stylesheet" href="/static/css/base.css">
+  <title>Python Web 全栈作品</title>
 </head>
 <body class="has-navbar-fixed-top">
-    <header>
-        <nav class="navbar is-fixed-top has-shadow is-spaced">
-            <div class="container">
-                <div class="navbar-brand">
-                    <a class="navbar-item" href="/">
-                        <figure class="image is-24x24" style="margin-right: 0.5rem;">
-                            <img src="/static/images/python-logo.png" alt="python-logo">
-                        </figure>
-                        <span class="is-size-4">Python Web 全栈作品</span>
-                    </a>
-                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                    </a>
-                </div>
-                <div class="navbar-menu" id="navbarMenu">
-                    <div class="navbar-start">
-                        <a class="navbar-item">
-                            <span class="icon has-text-link">
-                                <ion-icon name="receipt-outline"></ion-icon>
-                            </span>
-                            <span>云笔记</span>
-                        </a>
-                        <a class="navbar-item">
-                            <span class="icon has-text-danger">
-                                <ion-icon name="list-outline"></ion-icon>
-                            </span>
-                            <span>待办列表</span>
-                        </a>
-                        <a class="navbar-item">
-                            <span class="icon has-text-primary">
-                                <ion-icon name="images-outline"></ion-icon>
-                            </span>
-                            <span>在线图床</span>
-                        </a>
-                        <a class="navbar-item">
-                            <span class="icon has-text-success">
-                                <ion-icon name="mail-outline"></ion-icon>
-                            </span>
-                            <span>留言板</span>
-                        </a>
-                    </div>
-                    <div class="navbar-end">
-                        <div class="navbar-item">
-                            <div class="buttons">
-                                <a class="button is-primary" href="/user/add">注册</a>
-                                <a class="button is-primary is-outlined" href="/user/login">登录</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  <header>
+    <nav class="navbar is-fixed-top has-shadow is-spaced">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <figure class="image is-24x24" style="margin-right: 0.5rem;">
+              <img src="/static/images/python-logo.png" alt="python-logo">
+            </figure>
+            <span class="is-size-4">Python Web 全栈作品</span>
+          </a>
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+        <div class="navbar-menu" id="navbarMenu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="/notes">
+              <span class="icon has-text-link">
+                <ion-icon name="receipt-outline"></ion-icon>
+              </span>
+              <span>云笔记</span>
+            </a>
+            <a class="navbar-item">
+              <span class="icon has-text-danger">
+                <ion-icon name="list-outline"></ion-icon>
+              </span>
+              <span>待办列表</span>
+            </a>
+            <a class="navbar-item">
+              <span class="icon has-text-primary">
+                <ion-icon name="images-outline"></ion-icon>
+              </span>
+              <span>在线图床</span>
+            </a>
+            <a class="navbar-item">
+              <span class="icon has-text-success">
+                <ion-icon name="mail-outline"></ion-icon>
+              </span>
+              <span>留言板</span>
+            </a>
+          </div>
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button is-primary" href="/user/add">注册</a>
+                <a class="button is-primary is-outlined" href="/user/login">登录</a>
+              </div>
             </div>
-        </nav>
-    </header>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
 
-    <main>
-    {% block main %}
-    {% endblock %}
-    </main>
+  <main>
+  {% block main %}
+  {% endblock %}
+  </main>
 
-    <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
-    <script src="/static/js/base.js"></script>
-    {% block js %}
-    {% endblock %}
+  <footer class="footer">
+    <div class="container">
+      <div class="content">
+
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
+  <script src="/static/js/base.js"></script>
+  {% block js %}
+  {% endblock %}
 </body>
 </html>
