@@ -1,6 +1,7 @@
 from flask import Flask
 from app.api import api
 from app.views import views
+from app.models import db
 from conf.config import Config
 from conf.settings import TEMPLATE_DIR, STATIC_DIR
 
@@ -13,6 +14,8 @@ def create_app():
     app.register_blueprint(api, url_prefix='/api')
     # 配置config
     app.config.from_object(Config)
+    # 绑定数据库
+    db.init_app(app)
     # 声明运行环境为开发环境
     app.env = 'development'
     # 开启调试模式
