@@ -27,3 +27,7 @@
 - 生成`requirements.txt`
 - 截图并放入`screenshots`
 
+## Tips
+
+- 全新的后端结构
+
