@@ -6,3 +6,10 @@ body {
 main {
   flex: 1 0 auto;
 }
+
+@media screen and (max-width: 768px) {
+  .breadcrumb {
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+  }
+}
