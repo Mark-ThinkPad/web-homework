@@ -5,7 +5,7 @@ views = Blueprint('views', __name__)
 
 @views.route('/')
 def index():
-    return render_template('base.html')
+    return render_template('index.html')
 
 
 @views.route('/user/login')
@@ -20,9 +20,9 @@ def add_user():
 
 @views.route('/notes')
 def get_notes():
-    return '云笔记'
+    return render_template('notes.html')
 
 
 @views.route('/notes/add')
 def add_notes():
-    return '添加云笔记'
+    return render_template('notes_add.html')
