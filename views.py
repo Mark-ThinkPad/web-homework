@@ -10,12 +10,12 @@ def index():
 
 @views.route('/user/login')
 def user_login():
-    return '用户登录'
+    return render_template('user_login.html')
 
 
 @views.route('/user/add')
 def add_user():
-    return '用户注册'
+    return render_template('user_add.html')
 
 
 @views.route('/notes')
