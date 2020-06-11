@@ -2,16 +2,71 @@
 function $id(id){return id?document.getElementById(id):document.body}
 function $one(dom){return dom?document.querySelector(dom):document.body}
 function $all(dom){return dom?document.querySelectorAll(dom):document.body}
-// 自定义Ajax函数
-let f1=String.fromCharCode(198);
-let f2=String.fromCharCode(199);
-function ajax(url, send, postback, f, moth)
-{
-  if(!url)return;
-  moth=moth?"GET":"POST";
-  let ajx=new XMLHttpRequest();
-  ajx.open(moth,url,!f);
-  ajx.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-  if(postback)ajx.onreadystatechange=function(){if(ajx.readyState==4&&ajx.status==200)postback(ajx.responseText)};
-  ajx.send(send)
+
+/**
+ * @typedef {Object} options
+ * @property {string} url
+ * @property {string} type
+ * @property {string} dataType
+ * @property {Object | FormData} data
+ * @property {boolean} hasFile
+ * @property {function(responseText: string, responseXML: document): void} success
+ * @property {function(status: number): void} fail
+ */
+/**
+ * 自定义Ajax函数
+ * @param {Object} options
+ */
+function ajax(options) {
+  options = options || {};
+  options.type = (options.type || "GET").toUpperCase();
+  options.dataType = options.dataType || "json"; // 服务器返回的数据类型
+  options.hasFile = options.hasFile || false; // 是否上传文件
+  // 处理传入的数据
+  let params;
+  if (options.hasFile) {
+    // 有文件时传入的是FormData, 无需处理
+    params = options.data
+  } else {
+    // 没有文件时对传入的参数格式化
+    params = formatParams(options.data);
+  }
+  // 创建 - 非IE6 - 第一步
+  let xhr;
+  if (window.XMLHttpRequest) {
+    xhr = new XMLHttpRequest();
+  } else { //IE6及其以下版本浏览器
+    xhr = new ActiveXObject('Microsoft.XMLHTTP');
+  }
+  // 接收 - 第三步
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      let status = xhr.status;
+      if (status === 200) {
+        options.success && options.success(xhr.responseText, xhr.responseXML);
+      } else {
+        options.fail && options.fail(status);
+      }
+    }
+  }
+  // 连接 和 发送 - 第二步
+  if (options.type === "GET") {
+    xhr.open("GET", options.url + "?" + params, true);
+    xhr.send(null);
+  } else if (options.type === "POST") {
+    xhr.open("POST", options.url, true);
+    if (!options.hasFile) {
+      // 不上传文件时, 设置表单提交时的内容类型
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    }
+    xhr.send(params);
+  }
+}
+// 格式化参数
+function formatParams(data) {
+  let arr = [];
+  for (let name in data) {
+    arr.push(encodeURIComponent(name) + "=" + encodeURIComponent(data[name]));
+  }
+  return arr.join("&");
 }
