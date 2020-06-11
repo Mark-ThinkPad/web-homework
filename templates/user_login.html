@@ -6,7 +6,16 @@
 {% block js %}
 <script>
   ajax({
-    url:
-  })
+    url: '/api/test',
+    type: 'POST',
+    dataType: 'json',
+    data: {name: 'abc', age: 12},
+    success: function (response) {
+      console.log(response, typeof(response.TestAPI));
+    },
+    fail: function (status) {
+      console.log(status)
+    }
+  });
 </script>
 {% endblock %}

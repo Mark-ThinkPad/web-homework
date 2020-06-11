@@ -10,7 +10,7 @@ function $all(dom){return dom?document.querySelectorAll(dom):document.body}
  * @property {string} dataType
  * @property {Object | FormData} data
  * @property {boolean} hasFile
- * @property {function(responseText: string, responseXML: document): void} success
+ * @property {function(response: Object): void} success
  * @property {function(status: number): void} fail
  */
 /**
@@ -43,7 +43,8 @@ function ajax(options) {
     if (xhr.readyState === 4) {
       let status = xhr.status;
       if (status === 200) {
-        options.success && options.success(xhr.responseText, xhr.responseXML);
+        let response = JSON.parse(xhr.responseText)
+        options.success && options.success(response);
       } else {
         options.fail && options.fail(status);
       }
