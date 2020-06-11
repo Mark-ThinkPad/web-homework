@@ -8,7 +8,7 @@ main {
 }
 
 @media screen and (max-width: 768px) {
-  .breadcrumb {
+  .bc {
     margin-left: 0.75rem;
     margin-right: 0.75rem;
   }
