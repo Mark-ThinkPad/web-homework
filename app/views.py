@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, session
+from app.decorators import login_required
 
 views = Blueprint('views', __name__)
 
@@ -20,10 +21,12 @@ def user_add():
 
 
 @views.route('/notes')
+@login_required
 def notes_get():
     return render_template('notes.html')
 
 
 @views.route('/notes/add')
+@login_required
 def notes_add():
     return render_template('notes_add.html')
