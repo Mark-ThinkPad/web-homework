@@ -1,11 +1,12 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, session
 
 views = Blueprint('views', __name__)
 
 
 @views.route('/')
 def index():
-    return render_template('index.html')
+    username = session.get('username')
+    return render_template('index.html', username=username)
 
 
 @views.route('/user/login')
@@ -14,15 +15,15 @@ def user_login():
 
 
 @views.route('/user/add')
-def add_user():
+def user_add():
     return render_template('user_add.html')
 
 
 @views.route('/notes')
-def get_notes():
+def notes_get():
     return render_template('notes.html')
 
 
 @views.route('/notes/add')
-def add_notes():
+def notes_add():
     return render_template('notes_add.html')

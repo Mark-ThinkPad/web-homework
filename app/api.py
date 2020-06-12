@@ -37,3 +37,9 @@ def user_login():
     session.clear()
     session['username'] = username
     return {'success': True, 'message': '登录成功'}
+
+
+@api.route('/user/logout', methods=['POST'])
+def user_logout():
+    session.clear()
+    return {'success': True, 'message': '注销成功'}
