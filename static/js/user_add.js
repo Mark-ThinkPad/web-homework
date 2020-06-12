@@ -14,10 +14,13 @@ document.addEventListener('DOMContentLoaded', function () {
           password: $password
         },
         success: function (response) {
-          console.log(response, typeof(response.success));
+          alert(response.message);
+          if (response.success) {
+            window.location.href = '/';
+          }
         },
         fail: function (status) {
-          console.log(status)
+          alert('HTTP状态码: ' + status);
         }
       });
     }
