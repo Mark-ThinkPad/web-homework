@@ -1,7 +1,49 @@
 {% extends "base.html" %}
 {% block main %}
 <div class="container">
-
+  <div class="columns is-centered">
+    <div class="column is-4 my-3 mx-3">
+      <div class="card">
+        <header class="card-header">
+          <p class="card-header-title">用户注册</p>
+        </header>
+        <div class="card-content">
+          <div class="field">
+            <label class="label">用户名</label>
+            <div class="control has-icons-left">
+              <input id="username" class="input" type="text" placeholder="用户名最大长度20" maxlength="20">
+              <span class="icon is-small is-left">
+                <i class="fas fa-user"></i>
+              </span>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">密码</label>
+            <div class="control has-icons-left">
+              <input id="password" class="input" type="password" placeholder="密码最大长度20" maxlength="20">
+              <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+              </span>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control has-text-centered">
+              <button id="user_add" class="button is-primary">注册</button>
+            </div>
+          </div>
+        </div>
+        <footer class="card-footer">
+          <a href="/user/login" class="card-footer-item">
+            <span>已经有账号了？点击</span>
+            <span class="icon">
+              <i class="fas fa-hand-point-right"></i>
+            </span>
+            <span>登录</span>
+          </a>
+        </footer>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}
 
