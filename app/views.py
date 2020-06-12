@@ -23,10 +23,12 @@ def user_add():
 @views.route('/notes')
 @login_required
 def notes_get():
-    return render_template('notes.html')
+    username = session.get('username')
+    return render_template('notes_get.html', username=username)
 
 
 @views.route('/notes/add')
 @login_required
 def notes_add():
-    return render_template('notes_add.html')
+    username = session.get('username')
+    return render_template('notes_add.html', username=username)

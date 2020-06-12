@@ -1,5 +1,6 @@
 from flask import Blueprint, request, session
 from sqlalchemy.exc import IntegrityError
+from app.decorators import login_required
 from app.models import db, User
 
 api = Blueprint('api', __name__)
@@ -43,3 +44,10 @@ def user_login():
 def user_logout():
     session.clear()
     return {'success': True, 'message': '注销成功'}
+
+
+@api.route('/notes/add', methods=['POST'])
+@login_required
+def notes_add():
+    username = session.get('username')
+

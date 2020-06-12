@@ -1,36 +1,63 @@
 {% extends "base.html" %}
 {% block main %}
 <div class="container">
-  <div class="my-4">
-    <nav class="breadcrumb bc" aria-label="breadcrumbs">
-      <ul>
-        <li>
-          <a href="/" class="has-text-info">
-            <span class="icon is-small">
-              <i class="fas fa-home" aria-hidden="true"></i>
-            </span>
-            <span>主页</span>
-          </a>
-        </li>
-        <li>
-          <a href="/notes">
-            <span class="icon is-small has-text-link">
-              <i class="far fa-sticky-note" aria-hidden="true"></i>
-            </span>
-            <span class="has-text-info">云笔记</span>
-          </a>
-        </li>
-        <li class="is-active">
-          <a href="/notes/add">
-            <span class="icon is-small has-text-primary">
-              <i class="far fa-plus-square" aria-hidden="true"></i>
-            </span>
-            <span>添加新笔记</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+  <nav class="breadcrumb mmx-3 my-3" aria-label="breadcrumbs">
+    <ul>
+      <li>
+        <a href="/" class="has-text-info">
+          <span class="icon is-small">
+            <i class="fas fa-home" aria-hidden="true"></i>
+          </span>
+          <span>主页</span>
+        </a>
+      </li>
+      <li>
+        <a href="/notes">
+          <span class="icon is-small has-text-link">
+            <i class="far fa-sticky-note" aria-hidden="true"></i>
+          </span>
+          <span class="has-text-info">云笔记</span>
+        </a>
+      </li>
+      <li class="is-active">
+        <a href="/notes/add">
+          <span class="icon is-small has-text-primary">
+            <i class="far fa-plus-square" aria-hidden="true"></i>
+          </span>
+          <span>添加新笔记</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="my-3 mmx-3">
+    <div class="field">
+      <label class="label">笔记标题</label>
+      <div class="control has-icons-left">
+        <input id="title" class="input" type="text" placeholder="标题最多40字" maxlength="40">
+        <span class="icon is-small is-left">
+          <i class="fas fa-heading"></i>
+        </span>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">笔记内容</label>
+      <div class="control">
+        <textarea id="content" class="textarea" placeholder="请输入笔记内容" rows="10"></textarea>
+      </div>
+    </div>
+    <div class="field">
+      <div class="control has-text-right has-text-centered-mobile">
+        <button id="notes_add" class="button is-primary">
+          <span class="icon is-small">
+            <i class="fas fa-plus-square"></i>
+          </span>
+          <span>添加</span>
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}
-
+{% block js %}
+<script src="/static/js/notes_add.js"></script>
+{% endblock %}
