@@ -10,4 +10,4 @@ UPLOAD_IMAGE_DIR = os.path.join(UPLOAD_DIR, 'images')
 # 上传图片的URL路径
 IMAGE_URL_PATH = UPLOAD_IMAGE_DIR.replace(BASE_DIR, '')
 # 上传图片允许的类型
-ALLOWED_IMAGE_TYPE = ('png', 'jpg', 'jpeg', 'gif', 'svg')
+ALLOWED_IMAGE_TYPE = ('png', 'jpg', 'jpeg', 'gif')

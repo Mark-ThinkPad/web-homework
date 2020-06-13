@@ -1,6 +1,6 @@
 from flask import Blueprint, request, session
 from sqlalchemy.exc import IntegrityError
-from werkzeug import secure_filename
+from werkzeug.utils import secure_filename
 from app.decorators import login_required
 from app.models import db, User, Note, Message, Image
 from app.utils import allowed_image

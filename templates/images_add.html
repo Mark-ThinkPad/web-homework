@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block main %}
+<div class="container">
+  <nav class="breadcrumb has-succeeds-separator mmx-3 my-3" aria-label="breadcrumbs">
+    <ul>
+      <li>
+        <a href="/" class="has-text-info">
+          <span class="icon is-small">
+            <i class="fas fa-home" aria-hidden="true"></i>
+          </span>
+          <span>主页</span>
+        </a>
+      </li>
+      <li>
+        <a href="/images">
+          <span class="icon is-small has-text-primary">
+            <i class="far fa-images" aria-hidden="true"></i>
+          </span>
+          <span class="has-text-info">在线图床</span>
+        </a>
+      </li>
+      <li class="is-active">
+        <a href="/images/add">
+          <span class="icon is-small has-text-primary">
+            <i class="fas fa-upload" aria-hidden="true"></i>
+          </span>
+          <span>上传图片</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="my-3 mmx-3">
+    <div class="field">
+      <div class="file has-name is-fullwidth is-primary">
+        <label class="file-label">
+          <input id="images" class="file-input" type="file" accept=".png, .jpg, .jpeg, .gif" multiple>
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fas fa-file-image"></i>
+            </span>
+            <span class="file-label">选择文件</span>
+          </span>
+          <span class="file-name">可以选择一个或多个文件</span>
+        </label>
+      </div>
+    </div>
+    <div class="field">
+      <div class="control">
+        <div class="buttons has-addons is-centered">
+          <button id="images_add" class="button is-outlined is-primary">
+            <span class="icon is-small">
+              <i class="fas fa-upload"></i>
+            </span>
+            <span>上传图片</span>
+          </button>
+          <button id="images_reset" class="button is-outlined is-primary">
+            <span class="icon is-small">
+              <i class="fas fa-redo-alt"></i>
+            </span>
+            <span>重置</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="/static/js/images_add.js"></script>
+{% endblock %}

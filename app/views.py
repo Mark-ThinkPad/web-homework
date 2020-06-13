@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, session
 from app.decorators import login_required
-from app.models import Note, Message
+from app.models import Note, Message, Image
 
 views = Blueprint('views', __name__)
 
@@ -39,3 +39,17 @@ def notes_add():
 def messages():
     msgs = Message.query.order_by(Message.upload_time.desc())
     return render_template('messages.html', messages=msgs)
+
+
+@views.route('/images')
+@login_required
+def images_get():
+    uid = session.get('uid')
+    images = Image.query.filter_by(uid=uid).order_by(Image.upload_time.desc())
+    return render_template('images_get.html', images=images)
+
+
+@views.route('/images/add')
+@login_required
+def images_add():
+    return render_template('images_add.html')
