@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, session
 from app.decorators import login_required
-from app.models import User
+from app.models import User, Note
 
 views = Blueprint('views', __name__)
 
@@ -26,12 +26,8 @@ def user_add():
 def notes_get():
     uid = session.get('uid')
     username = session.get('username')
-    user = User.query.get(uid)
-    print(user)
-    for note in user.notes:
-        print(note)
-        print(note.upload_time, type(note.upload_time))
-    return render_template('notes_get.html', username=username, notes=user.notes)
+    notes = Note.query.filter_by(uid=uid).order_by(Note.upload_time.desc())
+    return render_template('notes_get.html', username=username, notes=notes)
 
 
 @views.route('/notes/add')

@@ -35,16 +35,34 @@
       </div>
     </div>
   </div>
-  <div class="columns is-vcentered">
-    <div class="is-3">
-      {% for note in notes %}
-      <time id="time">{{ note.upload_time }}</time>
-      {% endfor %}
+  <div class="columns is-multiline my-0 mx-0">
+    {% for note in notes %}
+    <div class="column is-3 is-narrow">
+      <div class="card">
+        <header class="card-header">
+          <p class="card-header-title is-centered">{{ note.title }}</p>
+        </header>
+        <div class="card-content">
+          <div class="content">
+            <p class="cp">{{ note.content }}</p>
+          </div>
+        </div>
+        <footer class="card-footer">
+          <span class="card-footer-item has-text-left">
+            <time class="datetime">{{ note.upload_time }}</time>
+          </span>
+        </footer>
+      </div>
     </div>
+    {% endfor %}
   </div>
 </div>
 {% endblock %}
 
 {% block js %}
-<script src="/static/js/notes_get.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    setLocalTime();
+  });
+</script>
 {% endblock %}
