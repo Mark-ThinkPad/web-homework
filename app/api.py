@@ -1,7 +1,7 @@
 from flask import Blueprint, request, session
 from sqlalchemy.exc import IntegrityError
 from app.decorators import login_required
-from app.models import db, User, Note
+from app.models import db, User, Note, Message
 
 api = Blueprint('api', __name__)
 
@@ -64,3 +64,17 @@ def notes_add():
     db.session.commit()
     return {'success': True, 'message': '添加新笔记成功'}
 
+
+@api.route('/messages/add', methods=['POST'])
+@login_required
+def messages_add():
+    uid = session.get('uid')
+    content = request.form.get('content', False)
+
+    if not content:
+        return {'success': False, 'message': '传入数据不全'}
+
+    new_msg = Message(uid, content)
+    db.session.add(new_msg)
+    db.session.commit()
+    return {'success': True, 'message': '添加新留言成功'}
