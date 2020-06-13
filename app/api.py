@@ -1,7 +1,11 @@
 from flask import Blueprint, request, session
 from sqlalchemy.exc import IntegrityError
+from werkzeug import secure_filename
 from app.decorators import login_required
-from app.models import db, User, Note, Message
+from app.models import db, User, Note, Message, Image
+from app.utils import allowed_image
+from conf.settings import UPLOAD_IMAGE_DIR, IMAGE_URL_PATH
+import os
 
 api = Blueprint('api', __name__)
 
@@ -78,3 +82,25 @@ def messages_add():
     db.session.add(new_msg)
     db.session.commit()
     return {'success': True, 'message': '添加新留言成功'}
+
+
+@api.route('/images/add', methods=['POST'])
+@login_required
+def images_add():
+    uid = session.get('uid')
+    files = request.files.getlist('images')
+    if len(files) == 0:
+        return {'success': False, 'message': '传入参数错误'}
+    for file in files:
+        if file.filename == '':
+            return {'success': False, 'message': '没有文件传入'}
+        if file and allowed_image(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(UPLOAD_IMAGE_DIR, filename))
+            url = os.path.join(IMAGE_URL_PATH, filename)
+            new_image = Image(uid, filename, url)
+            db.session.add(new_image)
+            db.session.commit()
+        else:
+            return {'success': False, 'message': '没有文件传入或文件名含有非ASCII字符'}
+    return {'success': True, 'message': '上传图片成功'}
