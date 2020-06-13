@@ -10,6 +10,7 @@ class User(db.Model):
     password = db.Column(db.String(20))
     admin = db.Column(db.Boolean, default=False)  # 是否为管理员
     notes = db.relationship('Note', backref='user', lazy='dynamic')
+    messages = db.relationship('Message', backref='user', lazy='dynamic')
 
     def __init__(self, name, pwd):
         self.username = name
@@ -19,6 +20,7 @@ class User(db.Model):
         return '<User %r %r %r>' % (self.uid, self.username, self.admin)
 
 
+# 云笔记
 class Note(db.Model):
     nid = db.Column(db.Integer, primary_key=True)  # 默认为自增列
     uid = db.Column(db.Integer, db.ForeignKey('user.uid'))  # 关联用户id
@@ -33,3 +35,19 @@ class Note(db.Model):
 
     def __repr__(self):
         return '<Note %r %r %r %r>' % (self.nid, self.uid, self.upload_time, self.title)
+
+
+# 留言
+class Message(db.Model):
+    mid = db.Column(db.Integer, primary_key=True)  # 默认为自增列
+    uid = db.Column(db.Integer, db.ForeignKey('user.uid'))  # 关联用户id
+    upload_time = db.Column(db.DateTime, server_default=db.func.now())
+    content = db.Column(db.String(200))
+
+    def __init__(self, uid, content):
+        self.uid = uid
+        self.content = content
+
+    def __repr__(self):
+        return '<Message %r %r %r>' % (self.mid, self.uid, self.upload_time)
+
