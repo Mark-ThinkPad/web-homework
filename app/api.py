@@ -1,7 +1,7 @@
 from flask import Blueprint, request, session
 from sqlalchemy.exc import IntegrityError
 from app.decorators import login_required
-from app.models import db, User
+from app.models import db, User, Note
 
 api = Blueprint('api', __name__)
 
@@ -18,7 +18,9 @@ def user_add():
         new_user = User(username, password)
         db.session.add(new_user)
         db.session.commit()
-        session['username'] = username
+        user = User.query.filter_by(username=username, password=password).first()
+        session['uid'] = user.uid
+        session['username'] = user.username
         return {'success': True, 'message': '注册成功'}
     except IntegrityError:
         return {'success': False, 'message': '用户名已存在'}
@@ -36,7 +38,8 @@ def user_login():
     if user is None:
         return {'success': False, 'message': '用户名错误或密码错误'}
     session.clear()
-    session['username'] = username
+    session['uid'] = user.uid
+    session['username'] = user.username
     return {'success': True, 'message': '登录成功'}
 
 
@@ -49,5 +52,15 @@ def user_logout():
 @api.route('/notes/add', methods=['POST'])
 @login_required
 def notes_add():
-    username = session.get('username')
+    uid = session.get('uid')
+    title = request.form.get('title', False)
+    content = request.form.get('content', False)
+
+    if not (title and content):
+        return {'success': False, 'message': '传入数据不全'}
+
+    new_note = Note(uid, title, content)
+    db.session.add(new_note)
+    db.session.commit()
+    return {'success': True, 'message': '添加新笔记成功'}
 

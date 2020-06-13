@@ -35,5 +35,16 @@
       </div>
     </div>
   </div>
+  <div class="columns is-vcentered">
+    <div class="is-3">
+      {% for note in notes %}
+      <time id="time">{{ note.upload_time }}</time>
+      {% endfor %}
+    </div>
+  </div>
 </div>
+{% endblock %}
+
+{% block js %}
+<script src="/static/js/notes_get.js"></script>
 {% endblock %}
