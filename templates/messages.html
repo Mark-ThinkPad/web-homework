@@ -24,7 +24,7 @@
   <div class="my-3 mmx-3">
     <div class="field">
       <div class="control">
-        <textarea id="mContent" class="textarea" placeholder="单条留言最多200字" rows="4" maxlength="200"></textarea>
+        <textarea id="mContent" class="textarea" placeholder="单条留言最多200字" rows="3" maxlength="200"></textarea>
       </div>
     </div>
     <div class="field">
@@ -39,7 +39,22 @@
     </div>
   </div>
   <div class="my-3 mmx-3">
-
+  {% for message in messages %}
+    <div class="box">
+      <article class="media">
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong class="mr-2">{{ message.user.username }}</strong>
+              <small><time class="datetime">{{ message.upload_time }}</time></small>
+              <br>
+              <span class="cp">{{ message.content }}</span>
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
+  {% endfor %}
   </div>
 </div>
 {% endblock %}

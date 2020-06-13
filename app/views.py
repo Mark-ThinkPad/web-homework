@@ -7,8 +7,7 @@ views = Blueprint('views', __name__)
 
 @views.route('/')
 def index():
-    username = session.get('username')
-    return render_template('index.html', username=username)
+    return render_template('index.html')
 
 
 @views.route('/user/login')
@@ -25,20 +24,18 @@ def user_add():
 @login_required
 def notes_get():
     uid = session.get('uid')
-    username = session.get('username')
     notes = Note.query.filter_by(uid=uid).order_by(Note.upload_time.desc())
-    return render_template('notes_get.html', username=username, notes=notes)
+    return render_template('notes_get.html', notes=notes)
 
 
 @views.route('/notes/add')
 @login_required
 def notes_add():
-    username = session.get('username')
-    return render_template('notes_add.html', username=username)
+    return render_template('notes_add.html')
 
 
 @views.route('/messages')
 @login_required
 def messages():
-    username = session.get('username')
-    return render_template('messages.html', username=username)
+    msgs = Message.query.order_by(Message.upload_time.desc())
+    return render_template('messages.html', messages=msgs)

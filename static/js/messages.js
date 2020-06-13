@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
+  // 将UTC时区转化为本地时区
+  setLocalTime();
+  // 发送留言
   $id('messages_add').addEventListener('click', function () {
     let $content = $id('mContent').value;
     if ($content.length === 0) {

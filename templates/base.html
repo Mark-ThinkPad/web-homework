@@ -55,9 +55,9 @@
             </a>
           </div>
           <div class="navbar-end">
-            {% if username %}
+            {% if session.username %}
             <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">{{ username }}</a>
+              <a class="navbar-link">{{ session.username }}</a>
               <div class="navbar-dropdown">
                 <a class="navbar-item" id="user_logout">退出登录</a>
               </div>
@@ -152,28 +152,28 @@
   <script defer src="/static/fonts/fontawesome-free-5.13.0-web/js/all.js"></script>
   <script src="/static/js/functions.js"></script>
   <script src="/static/js/base.js"></script>
-  {% if username %}
+  {% if session.username %}
   <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    $id('user_logout').addEventListener('click', function () {
-      ajax({
-        url: '/api/user/logout',
-        type: 'POST',
-        dataType: 'json',
-        data: {},
-        success: function (response) {
-          if (response.success) {
-            window.location.href = '/';
-          } else {
-            alert(response.message);
+    document.addEventListener('DOMContentLoaded', function () {
+      $id('user_logout').addEventListener('click', function () {
+        ajax({
+          url: '/api/user/logout',
+          type: 'POST',
+          dataType: 'json',
+          data: {},
+          success: function (response) {
+            if (response.success) {
+              window.location.href = '/';
+            } else {
+              alert(response.message);
+            }
+          },
+          fail: function (status) {
+            alert('HTTP状态码: ' + status);
           }
-        },
-        fail: function (status) {
-          alert('HTTP状态码: ' + status);
-        }
-      });
-    })
-  });
+        });
+      })
+    });
   </script>
   {% endif %}
   {% block js %}
