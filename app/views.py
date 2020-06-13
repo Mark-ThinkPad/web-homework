@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, session
 from app.decorators import login_required
-from app.models import User, Note
+from app.models import Note, Message
 
 views = Blueprint('views', __name__)
 
@@ -35,3 +35,10 @@ def notes_get():
 def notes_add():
     username = session.get('username')
     return render_template('notes_add.html', username=username)
+
+
+@views.route('/messages')
+@login_required
+def messages():
+    username = session.get('username')
+    return render_template('messages.html', username=username)
