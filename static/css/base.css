@@ -10,6 +10,10 @@ main {
   white-space: pre-wrap;
   overflow: hidden;
 }
+.bg {
+  background-image: url("/static/images/bush.png");
+  background-repeat: repeat;
+}
 
 @media screen and (max-width: 768px) {
   .mmx-3 {
