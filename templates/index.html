@@ -1,18 +1,90 @@
 {% extends "base.html" %}
 {% block main %}
-<section class="hero is-fullheight bg">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">Web开发技术大作业</h1>
-      <h2 class="subtitle">计科11704-201703407-周淦清</h2>
-      <button class="button is-primary">
-        <span class="icon is-small">
-          <i class="fas fa-chevron-circle-down"></i>
-        </span>
-        <span>了解更多</span>
-      </button>
+<div class="bg">
+  <section class="hero is-fullheight">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">Web开发技术大作业</h1>
+        <h2 class="subtitle">计科11704-201703407-周淦清</h2>
+        <a class="button is-primary" href="#blocks">
+          <span class="icon is-small">
+            <i class="fas fa-chevron-circle-down"></i>
+          </span>
+          <span>了解更多</span>
+        </a>
+      </div>
+    </div>
+  </section>
+  <div class="container" id="blocks">
+    <div class="columns is-multiline is-mobile my-0 mmx-0 tmx-0">
+      <div class="column is-2-desktop is-4-tablet is-half-mobile">
+        <div class="notification is-primary has-text-centered px-0">
+          <a class="nl" href="/notes">
+            <span class="icon is-large">
+              <i class="far fa-sticky-note fa-2x"></i>
+            </span>
+            <br>
+            <span class="is-size-5">云笔记</span>
+          </a>
+        </div>
+      </div>
+      <div class="column is-2-desktop is-4-tablet is-half-mobile">
+        <div class="notification is-primary has-text-centered px-0">
+          <a class="nl" href="/images">
+            <span class="icon is-large">
+              <i class="far fa-images fa-2x"></i>
+            </span>
+            <br>
+            <span class="is-size-5">在线图床</span>
+          </a>
+        </div>
+      </div>
+      <div class="column is-2-desktop is-4-tablet is-half-mobile">
+        <div class="notification is-primary has-text-centered px-0">
+          <a class="nl" href="/messages">
+            <span class="icon is-large">
+              <i class="fas fa-comment-dots fa-2x"></i>
+            </span>
+            <br>
+            <span class="is-size-5">留言板</span>
+          </a>
+        </div>
+      </div>
+      <div class="column is-2-desktop is-4-tablet is-half-mobile">
+        <div class="notification is-primary has-text-centered px-0">
+          <a class="nl" href="/user/add">
+            <span class="icon is-large">
+              <i class="fas fa-users fa-2x"></i>
+            </span>
+            <br>
+            <span class="is-size-5">注册</span>
+          </a>
+        </div>
+      </div>
+      <div class="column is-2-desktop is-4-tablet is-half-mobile">
+        <div class="notification is-primary has-text-centered px-0">
+          <a class="nl" href="/user/login">
+            <span class="icon is-large">
+              <i class="fas fa-sign-in-alt fa-2x"></i>
+            </span>
+            <br>
+            <span class="is-size-5">登录</span>
+          </a>
+        </div>
+      </div>
+      <div class="column is-2-desktop is-4-tablet is-half-mobile">
+        <div class="notification is-primary has-text-centered px-0">
+          <a class="nl" href="/about">
+            <span class="icon is-large">
+              <i class="fas fa-info-circle fa-2x"></i>
+            </span>
+            <br>
+            <span class="is-size-5">项目介绍</span>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
-</section>
+  <div class="py-3"></div>
+</div>
 {% endblock %}
-

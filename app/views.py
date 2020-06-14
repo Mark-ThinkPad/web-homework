@@ -53,3 +53,8 @@ def images_get():
 @login_required
 def images_add():
     return render_template('images_add.html')
+
+
+@views.route('/about')
+def about():
+    return render_template('about.html')

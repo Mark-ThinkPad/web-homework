@@ -35,12 +35,6 @@
               </span>
               <span>云笔记</span>
             </a>
-            <a class="navbar-item">
-              <span class="icon has-text-danger">
-                <i class="far fa-list-alt"></i>
-              </span>
-              <span>待办列表</span>
-            </a>
             <a class="navbar-item" href="/images">
               <span class="icon has-text-primary">
                 <i class="far fa-images"></i>
@@ -53,11 +47,22 @@
               </span>
               <span>留言板</span>
             </a>
+            <a class="navbar-item" href="/about">
+              <span class="icon has-text-info">
+                <i class="fas fa-info-circle"></i>
+              </span>
+              <span>项目介绍</span>
+            </a>
           </div>
           <div class="navbar-end">
             {% if session.username %}
             <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">{{ session.username }}</a>
+              <a class="navbar-link">
+                <span class="icon has-text-info">
+                  <i class="far fa-user-circle"></i>
+                </span>
+                <span>{{ session.username }}</span>
+              </a>
               <div class="navbar-dropdown">
                 <a class="navbar-item" id="user_logout">退出登录</a>
               </div>
@@ -88,7 +93,7 @@
           <div class="column is-9">
             <h1 class="title is-4">专选课《Web开发技术》大作业</h1>
             <p>用户登录系统配合session实现</p>
-            <p>基于用户系统设计了四个功能板块：云笔记、待办列表、在线图床、留言板</p>
+            <p>设计了五个板块：用户注册/登录/注销、云笔记、在线图床、留言板、项目介绍</p>
             <p>后端采用Python Flask方案，数据库使用SQLite3</p>
             <p>数据库的建立和操作均使用ORM方式，由Flask-SQLAlchemy提供</p>
             <p>前端UI使用纯CSS框架Bluma和图标库Font Awesome构建</p>
