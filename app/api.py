@@ -1,10 +1,11 @@
 from flask import Blueprint, request, session
 from sqlalchemy.exc import IntegrityError
 from werkzeug.utils import secure_filename
+from pypinyin import lazy_pinyin
 from app.decorators import login_required
 from app.models import db, User, Note, Message, Image
 from app.utils import allowed_image
-from conf.settings import UPLOAD_IMAGE_DIR, IMAGE_URL_PATH
+from conf.settings import UPLOAD_IMAGE_DIR, IMAGE_URL_PATH, ALLOWED_IMAGE_TYPE
 import os
 
 api = Blueprint('api', __name__)
@@ -96,11 +97,15 @@ def images_add():
             return {'success': False, 'message': '没有文件传入'}
         if file and allowed_image(file.filename):
             filename = secure_filename(file.filename)
+            if filename.startswith('.') or filename in ALLOWED_IMAGE_TYPE:
+                name = file.filename.split('.')[0]
+                ext = file.filename.split('.')[1]
+                filename = '_'.join(lazy_pinyin(name)) + '.' + ext
             file.save(os.path.join(UPLOAD_IMAGE_DIR, filename))
             url = os.path.join(IMAGE_URL_PATH, filename)
             new_image = Image(uid, filename, url)
             db.session.add(new_image)
             db.session.commit()
         else:
-            return {'success': False, 'message': '没有文件传入或文件名含有非ASCII字符'}
+            return {'success': False, 'message': '没有文件传入或文件类型不允许'}
     return {'success': True, 'message': '上传图片成功'}

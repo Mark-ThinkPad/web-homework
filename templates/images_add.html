@@ -47,13 +47,13 @@
     <div class="field">
       <div class="control">
         <div class="buttons has-addons is-centered">
-          <button id="images_add" class="button is-outlined is-primary">
+          <button id="images_add" class="button is-outlined is-primary" type="button" disabled>
             <span class="icon is-small">
               <i class="fas fa-upload"></i>
             </span>
             <span>上传图片</span>
           </button>
-          <button id="images_reset" class="button is-outlined is-primary">
+          <button id="images_reset" class="button is-outlined is-primary" type="reset" disabled>
             <span class="icon is-small">
               <i class="fas fa-redo-alt"></i>
             </span>
@@ -61,6 +61,11 @@
           </button>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="my-3 mmx-3">
+    <div class="card">
+      <div class="card-image" id="images-preview"></div>
     </div>
   </div>
 </div>
