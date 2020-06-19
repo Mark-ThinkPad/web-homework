@@ -47,7 +47,7 @@
   - `settings.py`: 提供一些目录的绝对路径和其他杂项
 - `/db/`: 存放数据库相关文件
   - `models.db`: SQLite3本地文件
-- `/migrations/`: Flask Migrate的生成文件夹
+- `/migrations/`: Flask Migrate生成的文件夹
 - `/static/`: 存放网站所需的静态文件
   - `/upload/`: 存放用户上传的文件
 - `/templates/`: 存放 Jinja2 网页模板
