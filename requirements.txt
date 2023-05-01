@@ -1,5 +1,5 @@
 pypinyin==0.37.0
-Flask==1.1.2
+Flask==2.3.2
 alembic==1.4.2
 Werkzeug==1.0.1
 Flask_Migrate==2.5.2
